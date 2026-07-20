@@ -1,0 +1,15 @@
+# Local JSON storage (only used when MONGO_URI isn't set) — never commit real user data
+bioguard_db.json
+audit_log.json
+settings.json
+*.lock
+
+# Biometric data
+faces/
+voiceprints/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
