@@ -1,7 +1,7 @@
 # ── Core ──────────────────────────────
 streamlit>=1.36.0           # 1.36+ required for st.audio_input (browser mic capture)
 opencv-python-headless>=4.9.0
-mediapipe>=0.10.9
+mediapipe>=0.10.14
 protobuf>=4.25.3,<5         # mediapipe 0.10.x requires this exact range; 3.x and 5.x both break it
 numpy>=1.24.0,<2.0.0        # mediapipe 0.10.x breaks on numpy 2.x — pin explicitly, don't rely on transitive resolution
 filelock>=3.13.0            # prevents concurrent users corrupting the shared JSON files
