@@ -1,7 +1,10 @@
 # ── Core ──────────────────────────────
 streamlit>=1.36.0           # 1.36+ required for st.audio_input (browser mic capture)
-opencv-python-headless>=4.9.0
-mediapipe>=0.10.14
+opencv-python-headless>=4.9.0,<4.12   # 4.12+ requires numpy>=2, which conflicts with mediapipe's numpy<2 pin below
+mediapipe==0.10.21         # PINNED, not >=: verified against Python 3.12 — 0.10.30+ drops the legacy
+                            # mp.solutions.* API this app uses (deprecated by Google since 2023),
+                            # causing "module 'mediapipe' has no attribute 'solutions'" on import.
+                            # 0.10.13 through 0.10.21 all confirmed working; 0.10.9 has no cp312 wheel.
 protobuf>=4.25.3,<5         # mediapipe 0.10.x requires this exact range; 3.x and 5.x both break it
 numpy>=1.24.0,<2.0.0        # mediapipe 0.10.x breaks on numpy 2.x — pin explicitly, don't rely on transitive resolution
 filelock>=3.13.0            # prevents concurrent users corrupting the shared JSON files
